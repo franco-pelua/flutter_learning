@@ -5,7 +5,7 @@ const double _sizedBoxHeight = 40;
 class Home extends StatelessWidget {
   const Home(this.startQuiz, {super.key});
 
-  final void Function() startQuiz;
+  final void Function(String screenName) startQuiz;
 
   @override
   Widget build(context) {
@@ -22,7 +22,9 @@ class Home extends StatelessWidget {
             style: TextStyle(color: Colors.white, fontSize: 28)),
         const SizedBox(height: _sizedBoxHeight),
         OutlinedButton.icon(
-          onPressed: startQuiz,
+          onPressed: () {
+            startQuiz('questions_screen');
+          },
           icon: const Icon(
             Icons.arrow_right_alt,
             color: Colors.white,
