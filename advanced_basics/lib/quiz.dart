@@ -27,7 +27,6 @@ class _QuizState extends State<Quiz> {
     selectedAnswers.add(answer);
 
     if (selectedAnswers.length == questions.length) {
-      selectedAnswers = [];
       switchScreen('results_screen');
     }
   }
@@ -45,10 +44,15 @@ class _QuizState extends State<Quiz> {
                   colors: [Colors.deepPurple, Colors.purple]),
             ),
             child: switch (activeScreen) {
-              'home' => Home(switchScreen),
-              'questions_screen' =>
-                QuestionsScreen(onSelectAnswer: chooseAnswer),
-              'results_screen' => const ResultsScreen(),
+              'home' => Home(
+                  switchScreen,
+                ),
+              'questions_screen' => QuestionsScreen(
+                  onSelectAnswer: chooseAnswer,
+                ),
+              'results_screen' => ResultsScreen(
+                  chosenAnswers: selectedAnswers,
+                ),
               _ => Home(switchScreen),
             }),
       ),
